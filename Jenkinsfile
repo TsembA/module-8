@@ -4,7 +4,6 @@
 def gv
 
 pipeline {
-
     agent any
     tools {
         nodejs "node"
@@ -12,32 +11,40 @@ pipeline {
     stages {
         stage('INCREMENT VERSION') {
             steps {
-                script {
-                    incrementVersion()
+                dir('app') {
+                    script {
+                        incrementVersion()
+                    }
                 }
             }
         }
 
         stage('RUN TEST') {
             steps {
-                script {
-                    testApp()
+                dir('app') {
+                    script {
+                        testApp()
+                    }
                 }
             }
         }
 
         stage('BUILD AND PUSH DOCKER IMAGE') {
             steps {
-                script {
-                    buildAndPushImage()
+                dir('app') {
+                    script {
+                        buildAndPushImage()
+                    }
                 }
             }
         }
 
         stage('COMMIT VERSION UPDATE') {
             steps {
-                script {
-                    commitVersionUpdate()
+                dir('app') {
+                    script {
+                        commitVersionUpdate()
+                    }
                 }
             }
         }
