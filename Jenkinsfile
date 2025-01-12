@@ -31,13 +31,12 @@ pipeline {
 
         stage('BUILD AND PUSH DOCKER IMAGE') {
             steps {
-                dir('app') {
-                    script {
-                        buildAndPushImage()
-                    }
+                script {
+                    buildAndPushImage()
                 }
             }
         }
+    }
 
         stage('COMMIT VERSION UPDATE') {
             steps {
