@@ -36,7 +36,6 @@ pipeline {
                 }
             }
         }
-    }
 
         stage('COMMIT VERSION UPDATE') {
             steps {
