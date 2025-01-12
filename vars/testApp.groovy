@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
 
-def testApp() {
-    sh "npm install"\
+def call() {
+    sh "npm install"
 }
